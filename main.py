@@ -1,4 +1,4 @@
-from PySide6.QtWidgets import QApplication, QWidget, QLabel, QLineEdit, QCheckBox, QPushButton, QVBoxLayout
+from PySide6.QtWidgets import QApplication, QWidget, QLabel, QLineEdit, QCheckBox, QPushButton, QGridLayout
 
 
 class MainWindow(QWidget):
@@ -17,25 +17,25 @@ class MainWindow(QWidget):
     def create_widgets(self):
         self.lbl_length_password = QLabel("Longueur du mot de passe")
         self.length_password = QLineEdit()
-        self.lbl_check_digits = QLabel("Contient des chiffres")
+        self.lbl_check_digits = QLabel("avec chiffres")
         self.digits = QCheckBox()
-        self.lbl_special_char = QLabel("Contient des caractères speciaux")
+        self.lbl_special_char = QLabel("Avec caractères speciaux")
         self.special_char = QCheckBox()
         self.btn_generate = QPushButton("Generer un mot de passe")
 
     def create_layouts(self):
-        self.main_layout = QVBoxLayout(self)
+        self.main_layout = QGridLayout(self)
 
     def modify_widgets(self):
         pass
 
     def add_widgets_to_layouts(self):
-        self.main_layout.addWidget(self.lbl_length_password)
-        self.main_layout.addWidget(self.length_password)
-        self.main_layout.addWidget(self.lbl_check_digits)
-        self.main_layout.addWidget(self.digits)
-        self.main_layout.addWidget(self.lbl_special_char)
-        self.main_layout.addWidget(self.special_char)
+        self.main_layout.addWidget(self.lbl_length_password, 0, 0)
+        self.main_layout.addWidget(self.length_password, 0, 1)
+        self.main_layout.addWidget(self.lbl_check_digits, 1, 0)
+        self.main_layout.addWidget(self.digits, 1, 1)
+        self.main_layout.addWidget(self.lbl_special_char, 2, 0)
+        self.main_layout.addWidget(self.special_char, 2, 1)
         self.main_layout.addWidget(self.btn_generate)
 
     def setup_connections(self):
