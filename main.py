@@ -39,7 +39,6 @@ class MainWindow(QWidget):
         self.main_layout.addWidget(self.btn_generate, 3, 0)
         self.main_layout.addWidget(self.password, 3, 1)
 
-
     def setup_connections(self):
         self.btn_generate.clicked.connect(self.generate_password)
 
