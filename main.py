@@ -18,6 +18,7 @@ class MainWindow(QWidget):
         self.setup_connections()
 
     def create_widgets(self):
+
         self.lbl_length_password = QLabel("Longueur du mot de passe:")
         self.length_password = QLineEdit()
         self.digits = QCheckBox("avec chiffres")
@@ -38,6 +39,7 @@ class MainWindow(QWidget):
         self.main_layout.addWidget(self.special_char, 2, 0)
         self.main_layout.addWidget(self.btn_generate, 3, 0)
         self.main_layout.addWidget(self.password, 3, 1)
+
 
     def setup_connections(self):
         self.btn_generate.clicked.connect(self.generate_password)
