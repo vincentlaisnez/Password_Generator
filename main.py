@@ -36,15 +36,48 @@ class MainWindow(QWidget):
                 color: white;
             }
             QPushButton{
-                background-color: #7E57C2;
+                background-color: #1A237E;
                 border-style: outset;
                 border-width: 2px;
                 border-radius: 10px;
-                border-color: #311B92;
+                border-color: #536DFE;
                 font: bold 14px;
                 min-width: 10em;
                 padding: 6px;
             }"""
+        )
+        self.digits.setStyleSheet(
+            """
+            QCheckBox {
+                spacing: 15px;
+                
+            }
+            QCheckBox::indicator {
+                border-style: outset;
+                border-width: 2px;
+                border-color: #1A237E;
+            }
+            QCheckBox::indicator:checked {
+                background-color: green;
+            }
+            """
+        )
+
+        self.special_char.setStyleSheet(
+            """
+            QCheckBox {
+                spacing: 15px;
+
+            }
+            QCheckBox::indicator {
+                border-style: outset;
+                border-width: 2px;
+                border-color: #1A237E;
+            }
+            QCheckBox::indicator:checked {
+                background-color: green;
+            }
+            """
         )
 
     def add_widgets_to_layouts(self):
