@@ -1,5 +1,7 @@
 from PySide6.QtWidgets import QApplication, QWidget, QLabel, QLineEdit, QCheckBox, QPushButton, QGridLayout
 
+import generate_password
+
 
 class MainWindow(QWidget):
     def __init__(self):
@@ -22,6 +24,7 @@ class MainWindow(QWidget):
         self.lbl_special_char = QLabel("Avec caractères speciaux")
         self.special_char = QCheckBox()
         self.btn_generate = QPushButton("Generer un mot de passe")
+        self.password = QLineEdit()
 
     def create_layouts(self):
         self.main_layout = QGridLayout(self)
@@ -37,9 +40,17 @@ class MainWindow(QWidget):
         self.main_layout.addWidget(self.lbl_special_char, 2, 0)
         self.main_layout.addWidget(self.special_char, 2, 1)
         self.main_layout.addWidget(self.btn_generate)
+        self.main_layout.addWidget(self.password)
 
     def setup_connections(self):
-        pass
+        self.btn_generate.clicked.connect(self.generate_password)
+
+    def generate_password(self):
+        length = int(self.length_password.text())
+        digits = self.digits.isChecked()
+        special_char = self.special_char.isChecked()
+        password = generate_password.generate_password(length, digits, special_char)
+        self.password.setText(password)
 
 
 if __name__ == '__main__':
