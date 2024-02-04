@@ -2,24 +2,25 @@ import secrets
 import string
 
 
-def generate_password(length):
+def generate_password(length, digits=True, special_char=True):
     """
     Generates a random password of the specified length.
 
     Args:
         length (int): The length of the password.
+        digits (bool, optional): Whether to include digits in the password. Defaults to True.
+        special_char (bool, optional): Whether to include special characters in the password. Defaults to True.
 
     Returns:
         str: The randomly generated password.
+"""
 
-    Examples:
-         generate_password(8)
-        'xY3@p9$z'
-         generate_password(12)
-        'A7!bR2@q5#eZ'
-    """
-    alphabet = string.ascii_letters + string.digits + string.punctuation
-    return ''.join(secrets.choice(alphabet) for _ in range(length))
+    characters = string.ascii_letters
+    if digits:
+        characters += string.digits
+    if special_char:
+        characters += string.punctuation
+    return ''.join(secrets.choice(characters) for _ in range(length))
 
 
 if __name__ == '__main__':
