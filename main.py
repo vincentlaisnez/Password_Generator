@@ -1,4 +1,6 @@
-from PySide6.QtWidgets import QApplication, QWidget, QLabel, QLineEdit, QCheckBox, QPushButton, QGridLayout
+from PySide6.QtGui import QScreen
+from PySide6.QtWidgets import QApplication, QWidget, QLabel, QLineEdit, QCheckBox, QPushButton, QGridLayout, \
+    QVBoxLayout, QHBoxLayout
 
 import generate_password
 
@@ -17,12 +19,10 @@ class MainWindow(QWidget):
         self.setup_connections()
 
     def create_widgets(self):
-        self.lbl_length_password = QLabel("Longueur du mot de passe")
+        self.lbl_length_password = QLabel("Longueur du mot de passe:")
         self.length_password = QLineEdit()
-        self.lbl_check_digits = QLabel("avec chiffres")
-        self.digits = QCheckBox()
-        self.lbl_special_char = QLabel("Avec caractères speciaux")
-        self.special_char = QCheckBox()
+        self.digits = QCheckBox("avec chiffres")
+        self.special_char = QCheckBox("Avec caractères speciaux")
         self.btn_generate = QPushButton("Generer un mot de passe")
         self.password = QLineEdit()
 
@@ -35,12 +35,10 @@ class MainWindow(QWidget):
     def add_widgets_to_layouts(self):
         self.main_layout.addWidget(self.lbl_length_password, 0, 0)
         self.main_layout.addWidget(self.length_password, 0, 1)
-        self.main_layout.addWidget(self.lbl_check_digits, 1, 0)
-        self.main_layout.addWidget(self.digits, 1, 1)
-        self.main_layout.addWidget(self.lbl_special_char, 2, 0)
-        self.main_layout.addWidget(self.special_char, 2, 1)
-        self.main_layout.addWidget(self.btn_generate)
-        self.main_layout.addWidget(self.password)
+        self.main_layout.addWidget(self.digits, 1, 0)
+        self.main_layout.addWidget(self.special_char, 2, 0)
+        self.main_layout.addWidget(self.btn_generate, 3, 0)
+        self.main_layout.addWidget(self.password, 3, 1)
 
     def setup_connections(self):
         self.btn_generate.clicked.connect(self.generate_password)
@@ -56,6 +54,6 @@ class MainWindow(QWidget):
 if __name__ == '__main__':
     app = QApplication()
     main_window = MainWindow()
-    # main_window.resize(800, 600)
+    main_window.setFixedSize(400, 200)
     main_window.show()
     app.exec()
