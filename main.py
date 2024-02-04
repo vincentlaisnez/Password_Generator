@@ -1,6 +1,4 @@
-from PySide6.QtGui import QScreen
-from PySide6.QtWidgets import QApplication, QWidget, QLabel, QLineEdit, QCheckBox, QPushButton, QGridLayout, \
-    QVBoxLayout, QHBoxLayout
+from PySide6.QtWidgets import QApplication, QWidget, QLabel, QLineEdit, QCheckBox, QPushButton, QGridLayout
 
 import generate_password
 
