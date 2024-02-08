@@ -1,3 +1,6 @@
+import sys
+
+from PySide6.QtGui import QScreen
 from PySide6.QtWidgets import QApplication, QWidget, QLabel, QLineEdit, QCheckBox, QPushButton, QGridLayout, QMessageBox
 
 import generate_password
@@ -111,8 +114,13 @@ class MainWindow(QWidget):
 
 
 if __name__ == '__main__':
-    app = QApplication()
+    app = QApplication(sys.argv)
     main_window = MainWindow()
     main_window.setFixedSize(400, 200)
+    center = QScreen.availableGeometry(QApplication.primaryScreen())
+    frmx = (center.width() - main_window.width()) / 2
+    frmy = (center.height() - main_window.height()) / 2
+    main_window.move(frmx, frmy)
     main_window.show()
-    app.exec()
+    # Run the application
+    sys.exit(app.exec())
