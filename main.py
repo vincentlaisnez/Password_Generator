@@ -1,6 +1,5 @@
 import sys
 
-from PySide6.QtGui import QScreen
 from PySide6.QtWidgets import QApplication, QWidget, QLabel, QLineEdit, QCheckBox, QPushButton, QGridLayout, QMessageBox
 
 import generate_password
@@ -10,7 +9,6 @@ class MainWindow(QWidget):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Password Generator")
-        self.setStyleSheet("background-color: #424242;")
         self.setup_ui()
 
     def setup_ui(self):
@@ -32,6 +30,7 @@ class MainWindow(QWidget):
         self.main_layout = QGridLayout(self)
 
     def modify_widgets(self):
+        self.password.hide()
         self.btn_generate.setStyleSheet(
             """
             QPushButton:pressed {
@@ -39,7 +38,7 @@ class MainWindow(QWidget):
                 color: white;
             }
             QPushButton{
-                background-color: #1A237E;
+                background-color: #0C2AC3;
                 border-style: outset;
                 border-width: 2px;
                 border-radius: 10px;
@@ -49,36 +48,19 @@ class MainWindow(QWidget):
                 padding: 6px;
             }"""
         )
-        self.digits.setStyleSheet(
+        self.length_password.setStyleSheet(
             """
-            QCheckBox {
-                spacing: 15px;
-                
-            }
-            QCheckBox::indicator {
+            QLineEdit{
                 border-style: outset;
                 border-width: 2px;
-                border-color: #1A237E;
-            }
-            QCheckBox::indicator:checked {
-                background-color: green;
             }
             """
         )
-
-        self.special_char.setStyleSheet(
+        self.password.setStyleSheet(
             """
-            QCheckBox {
-                spacing: 15px;
-
-            }
-            QCheckBox::indicator {
+            QLineEdit{
                 border-style: outset;
                 border-width: 2px;
-                border-color: #1A237E;
-            }
-            QCheckBox::indicator:checked {
-                background-color: green;
             }
             """
         )
@@ -104,6 +86,7 @@ class MainWindow(QWidget):
             special_char = self.special_char.isChecked()
             password = generate_password.generate_password(length, digits, special_char)
             self.password.setText(password)
+            self.password.show()
         else:
             self.check_length()
 
@@ -116,11 +99,7 @@ class MainWindow(QWidget):
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     main_window = MainWindow()
-    main_window.setFixedSize(400, 200)
-    center = QScreen.availableGeometry(QApplication.primaryScreen())
-    frmx = (center.width() - main_window.width()) / 2
-    frmy = (center.height() - main_window.height()) / 2
-    main_window.move(frmx, frmy)
+    main_window.resize(400, 200)
     main_window.show()
     # Run the application
     sys.exit(app.exec())
