@@ -108,7 +108,7 @@ class MainWindow(QWidget):
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     main_window = MainWindow()
-    main_window.resize(400, 200)
+    main_window.setFixedHeight(150)
     main_window.show()
     # Run the application
     sys.exit(app.exec())
