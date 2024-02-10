@@ -21,9 +21,9 @@ class MainWindow(QWidget):
     def create_widgets(self):
         self.lbl_length_password = QLabel("Longueur du mot de passe:")
         self.length_password = QLineEdit()
-        self.digits = QCheckBox("avec chiffres")
-        self.special_char = QCheckBox("Avec caractères speciaux")
-        self.btn_generate = QPushButton("Generer un mot de passe")
+        self.digits = QCheckBox("Avec chiffres")
+        self.special_char = QCheckBox("Avec caractères spéciaux")
+        self.btn_generate = QPushButton("Générer un mot de passe")
         self.password = QLineEdit()
 
     def create_layouts(self):
@@ -39,6 +39,7 @@ class MainWindow(QWidget):
             }
             QPushButton{
                 background-color: #0C2AC3;
+                color: silver;
                 border-style: outset;
                 border-width: 2px;
                 border-radius: 10px;
@@ -66,10 +67,18 @@ class MainWindow(QWidget):
         )
 
     def add_widgets_to_layouts(self):
+        """
+        Add widgets to the main layout.
+        """
+        # Add label and input for password length
         self.main_layout.addWidget(self.lbl_length_password, 0, 0)
         self.main_layout.addWidget(self.length_password, 0, 1)
+
+        # Add checkboxes for including digits and special characters
         self.main_layout.addWidget(self.digits, 1, 0)
         self.main_layout.addWidget(self.special_char, 2, 0)
+
+        # Add button for generating password and display area for generated password
         self.main_layout.addWidget(self.btn_generate, 3, 0)
         self.main_layout.addWidget(self.password, 3, 1)
 
